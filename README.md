@@ -1,5 +1,5 @@
 # Tampered Doc
 
-This project was checks for validility of the document.
+This project checks for any tampering done with the document. It supports
 
 
