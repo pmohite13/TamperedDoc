@@ -1,6 +1,37 @@
-<form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
-  <input [formControl]="fileOrginal" type="file" (change)="onFileOriginalChange($event)"/>
-  <input [formControl]="fileToCheck" type="file" (change)="onFileToCheckChange($event)"/>
-  {{result ? result : ''}}
-  <button type="submit">Check</button>
+<form style="padding-left: 10%" [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
+  <div class="row mt20">
+    <div class="col-md-6">
+      <input accept=".pdf,.doc,.docx,.txt" [formControl]="fileOrginal" id='fileOrginal' name="fileOrginal" type="file"
+        (change)="onFileOriginalChange($event)" placeholder="Upload Original Document" />
+      <label for="fileOrginal">Upload Original Document</label>
+    </div>
+    <div class="col-md-6">
+      <input [formControl]="fileToCheck" type="file" id='fileToCheck' name="fileToCheck" (change)="onFileToCheckChange($event)"
+        placeholder="Upload Document To Check" />
+      <label for="fileToCheck">Upload Document To Check</label>
+    </div>
+  </div>
+  <div class="row mt20">
+    <div class="col-md-12">
+      <button class="btn btn-primary" type="submit">Check</button>
+    </div>
+  </div>
+  <div class="row mt20">
+    <div class="col-md-12">
+      <div *ngIf="isTamperred" class="alert alert-danger" role="alert">
+        {{result}}
+      </div>
+      <div *ngIf="!isTamperred" class="alert alert-success" role="alert">
+        {{result}}
+      </div>
+    </div>
+  </div>
+  <div class="row mt20">
+    <div class="col-md-12">
+      <div *ngIf="!fileFormatSupported" class="alert alert-primary" role="alert">
+        {{fileFormat}} file format is not supported
+      </div>
+    </div>
+  </div>
+
 </form>
