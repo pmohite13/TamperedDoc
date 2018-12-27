@@ -1,0 +1,6 @@
+<form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
+  <input [formControl]="fileOrginal" type="file" (change)="onFileOriginalChange($event)"/>
+  <input [formControl]="fileToCheck" type="file" (change)="onFileToCheckChange($event)"/>
+  {{result ? result : ''}}
+  <button type="submit">Check</button>
+</form>
